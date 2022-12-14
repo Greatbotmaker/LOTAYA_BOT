@@ -172,8 +172,13 @@ async def check_fsub(bot: Client, message: types.Message, try_again: str = None,
         if sendMsg:
             invite_link = await bot.create_chat_invite_link(Config.FORCE_SUB_CHANNEL)
             btn = [
-                [types.InlineKeyboardButton("Join Channel", url=invite_link.invite_link)]
-            ]
+                [types.InlineKeyboardButton("𝐉𝐎𝐈𝐍 𝐔𝐏𝐃𝐀𝐓𝐄 𝐂𝐇𝐀𝐍𝐍𝐄𝐋", url=invite_link.invite_link)]
+            ],
+            [
+                 types.InlineKeyboardButton(
+                            "Try Again", url=f"https://t.me/{bot.me.username}?start={try_again}"
+                        )
+                    ]
             if try_again:
                 btn.append(
                     [
