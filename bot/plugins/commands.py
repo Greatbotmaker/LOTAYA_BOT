@@ -112,7 +112,7 @@ async def start_handler(bot: Bot, msg: types.Message):
                 
             else:
                
-                btn.append([types.InlineKeyboardButton(text="🔰 1/1 🔰", callback_data="pages")])
+                btn.append([types.InlineKeyboardButton((text="𝐍𝐎 𝐌𝐎𝐑𝐄 𝐏𝐀𝐆𝐄𝐒 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄",callback_data="pages")])
                     
             if imdb:
                 cap = Config.TEMPLATE.format(  # type: ignore
