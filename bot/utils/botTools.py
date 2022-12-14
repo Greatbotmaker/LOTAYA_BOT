@@ -151,11 +151,17 @@ async def format_buttons(files: list, channel: bool):
     return btn
 
 
-FORCE_TEXT = """🗣 မတ်‌ဆွေကြည့်ချင်တဲ့ဇာတ်ကားကို ပိုပေးဖိုအတွက် 👉🏻 Join Channel 👈🏻 က Join ထားဖိုလိုပါတယ်။ 
-Channel လေးကို  Join ပြီးရင် 
-🔄 Try Again 👈 Tap me လေးကို နှိပ်လိုက်ရင် 👌 ရပါပြီး။ 
+FORCE_TEXT = """🗣 **You are not in our Back-up channel given below so you don't get the movie file...
+If you want the movie file, click on the '🍿ᴊᴏɪɴ ᴏᴜʀ ʙᴀᴄᴋ-ᴜᴘ ᴄʜᴀɴɴᴇʟ🍿' button below and join our back-up channel, then click on the '🔄 Try Again' button below...
+Then you will get the movie files...
 
-@Movie_Zone_KP"""
+သင်သည် အောက်တွင်ပေးထားသော 
+ကျွန်ုပ်တို့၏ Back-up ချန်နယ်တွင် မရှိသောကြောင့် 
+ရုပ်ရှင်ဖိုင်ကို မရနိုင်ပါ။ရုပ်ရှင်ဖိုင်ကို လိုချင်ပါက
+'🍿ᴊᴏɪɴ ᴏᴜʀ ʙᴀᴄᴋ-ᴜᴘ ᴄʜᴀɴɴᴇʟ🍿' ခလုတ်ကို နှိပ်ပြီး 
+ကျွန်ုပ်တို့၏ အရန်ချန်နယ်သို့ ဝင်ရောက်ပါ၊ 
+ထို့နောက် အောက်ပါ '🔄 Try Again' ခလုတ်ကို နှိပ်ပါ...
+ပြီးရင် ရုပ်ရှင်ဖိုင်တွေ ရပါလိမ့်မယ်...**"""""
 
 
 async def check_fsub(bot: Client, message: types.Message, try_again: str = None, sendMsg: bool = True):  # type: ignore
