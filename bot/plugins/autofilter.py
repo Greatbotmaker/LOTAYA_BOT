@@ -177,7 +177,7 @@ async def next_page(bot: Bot, query: types.CallbackQuery):
     search = Cache.BUTTONS.get(key)
     if not search:
         await query.answer(
-            "Search Expired\nPlease send movie name again.\n\nရှာဖွေမှု သက်တမ်းကုန်သွားပါပြီ။\nကျေးဇူးပြု၍ ရုပ်ရှင်အမည်ကို \nGroup ထဲ‌တွင် ထပ်မံပေးပို့ပါ။\n\n**@ovie_Group_MMSUB** ", show_alert=True
+            "Search Expired\nPlease send movie name again.\n\nရှာဖွေမှု သက်တမ်းကုန်သွားပါပြီ။\nကျေးဇူးပြု၍ ရုပ်ရှင်အမည်ကို \nGroup ထဲ‌တွင် ထပ်မံပေးပို့ပါ။\n\n**@Movie_Group_MMSUB** ", show_alert=True
         )
         return
 
@@ -268,8 +268,8 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
         reply_markup=types.InlineKeyboardMarkup(
             [
                 [
-                    types.InlineKeyboardButton("⭕️ Click here to Donate to the my channel.⭕️", url="https://t.me/kpmovielist/277"),             
-                    types.InlineKeyboardButton("👉🏻 𝐕𝐈𝐏 𝐒𝐞𝐫𝐢𝐞𝐬 𝐌𝐞𝐦𝐛𝐞𝐫 ဝင်ရန် 👌🏻", url="https://t.me/Kpautoreply_bot")
+                    types.InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),             
+                    types.InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
                 ],           
                 [
                     types.InlineKeyboardButton("⭕️ Owner Acc ⭕", url="https://t.me/KOPAINGLAY15")
