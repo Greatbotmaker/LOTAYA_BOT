@@ -111,26 +111,17 @@ async def give_filter(bot: Bot, message: types.Message):
                     ),
                 ]
                 )
-            btn.append(
-                    [types.InlineKeyboardButton(text="❌ဝင်မရရင်ဒီကိုနှိပ်ပြီး KP Channel Link Join ပါ❌", url="https://t.me/Movie_Zone_KP/3")]
-                )
-            btn.append(
-                    [types.InlineKeyboardButton(text="👉🏻 𝐕𝐈𝐏 𝐒𝐞𝐫𝐢𝐞𝐬 𝐌𝐞𝐦𝐛𝐞𝐫 ဝင်ရန် 👌🏻", url="https://t.me/Kpautoreply_bot")]
-                )
-            btn.append(
-                    [types.InlineKeyboardButton(text="⭕️ Click here to Donate to the my channel. ⭕️ ", url="https://t.me/kpmovielist/277")]
-                )
+            
             
         else:
-            btn.append([types.InlineKeyboardButton(text="❌ဝင်မရရင်ဒီကိုနှိပ်ပြီး KP Channel Link Join ပါ❌", url="https://t.me/Movie_Zone_KP/3")])                
+                       
             btn.append([types.InlineKeyboardButton(text="🔰 1/1 🔰", callback_data="pages")])
-            btn.append([types.InlineKeyboardButton(text="👉🏻 𝐕𝐈𝐏 𝐒𝐞𝐫𝐢𝐞𝐬 𝐌𝐞𝐦𝐛𝐞𝐫 ဝင်ရန် 👌🏻", url="https://t.me/Kpautoreply_bot")])
-            btn.append([types.InlineKeyboardButton(text="⭕️ Click here to Donate to the my channel. ⭕️ ", url="https://t.me/kpmovielist/277")])
+           
     else:
         btn = [
             [
                 types.InlineKeyboardButton(
-                    "📥  🅓🅞🅦🅝🅛🅞🅐🅓  📥", url=f"https://t.me/{bot.me.username}?start=filter{key}"
+                    "D༙O༙W༙N༙L༙O༙A༙D༙", url=f"https://t.me/{bot.me.username}?start=filter{key}"
                 )
             ]
         ]
@@ -143,7 +134,7 @@ async def give_filter(bot: Bot, message: types.Message):
         )
     else:
 	
-        cap = f"🔎 𝙌𝙪𝙚𝙧𝙮 : {search}\n🔮 𝙏𝙤𝙩𝙖𝙡 𝙍𝙚𝙨𝙪𝙡𝙩𝙨 : {total_results} \n🙋🏼 𝙍𝙚𝙦𝙪𝙚𝙨𝙩 𝙗𝙮 : {message.from_user.mention}\n⏰ 𝙍𝙚𝙦𝙪𝙚𝙨𝙩 𝘿𝙖𝙮𝙏𝙞𝙢𝙚: <code>{date}</code> <code>{time}</code> - <code>{TIMEZONE}</code>\n\n</b><a href='https://t.me/Movie_Zone_KP/3'>© MKS & KP Channel</a>"
+        cap = f"🔎 𝙌𝙪𝙚𝙧𝙮 : {search}"
     if imdb and imdb.get("poster") and settings["IMDB_POSTER"]:  # type: ignore
         try:
 	
@@ -186,7 +177,7 @@ async def next_page(bot: Bot, query: types.CallbackQuery):
     search = Cache.BUTTONS.get(key)
     if not search:
         await query.answer(
-            "Search Expired\nPlease send movie name again.\n\nရှာဖွေမှု သက်တမ်းကုန်သွားပါပြီ။\nကျေးဇူးပြု၍ ရုပ်ရှင်အမည်ကို \nGroup ထဲ‌တွင် ထပ်မံပေးပို့ပါ။\n\n**@Movie_Zone_KP** ", show_alert=True
+            "Search Expired\nPlease send movie name again.\n\nရှာဖွေမှု သက်တမ်းကုန်သွားပါပြီ။\nကျေးဇူးပြု၍ ရုပ်ရှင်အမည်ကို \nGroup ထဲ‌တွင် ထပ်မံပေးပို့ပါ။\n\n**@ovie_Group_MMSUB** ", show_alert=True
         )
         return
 
@@ -218,21 +209,7 @@ async def next_page(bot: Bot, query: types.CallbackQuery):
                 ),
             ]
         )
-        btn.append(
-            [
-                types.InlineKeyboardButton(text="❌ဝင်မရရင်ဒီကိုနှိပ်ပြီး KP Channel Link Join ပါ❌", url="https://t.me/Movie_Zone_KP/3")
-            ]
-        )
-        btn.append(
-            [
-                types.InlineKeyboardButton(text="👉🏻 𝐕𝐈𝐏 𝐒𝐞𝐫𝐢𝐞𝐬 𝐌𝐞𝐦𝐛𝐞𝐫 ဝင်ရန် 👌🏻", url="https://t.me/Kpautoreply_bot")
-            ]
-        )
-        btn.append(
-            [
-                types.InlineKeyboardButton(text="⭕️ Click here to Donate to the my channel. ⭕️ ", url="https://t.me/kpmovielist/277")
-            ]
-        )
+        
         
     elif off_set is None:
         btn.append(
@@ -244,15 +221,7 @@ async def next_page(bot: Bot, query: types.CallbackQuery):
                 types.InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}"),
             ]
         )
-        btn.append(
-                [types.InlineKeyboardButton(text="❌ဝင်မရရင်ဒီကိုနှိပ်ပြီး KP Channel Link Join ပါ❌", url="https://t.me/Movie_Zone_KP/3")]
-        )
-        btn.append(
-                [types.InlineKeyboardButton(text="👉🏻 𝐕𝐈𝐏 𝐒𝐞𝐫𝐢𝐞𝐬 𝐌𝐞𝐦𝐛𝐞𝐫 ဝင်ရန် 👌🏻", url="https://t.me/Kpautoreply_bot")]
-        ) 
-        btn.append(
-                [types.InlineKeyboardButton(text="⭕️ Click here to Donate to the my channel. ⭕️ ", url="https://t.me/kpmovielist/277")]
-        )
+        
     else:
         btn.append(
             [
@@ -264,15 +233,7 @@ async def next_page(bot: Bot, query: types.CallbackQuery):
                 types.InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}"),
             ],
         )
-        btn.append(
-                [types.InlineKeyboardButton(text="❌ဝင်မရရင်ဒီကိုနှိပ်ပြီး KP Channel Link Join ပါ❌", url="https://t.me/Movie_Zone_KP/3")]
-        )
-        btn.append(
-                [types.InlineKeyboardButton(text="👉🏻 𝐕𝐈𝐏 𝐒𝐞𝐫𝐢𝐞𝐬 𝐌𝐞𝐦𝐛𝐞𝐫 ဝင်ရန် 👌🏻", url="https://t.me/Kpautoreply_bot")]
-        )
-        btn.append(
-                [types.InlineKeyboardButton(text="⭕️ Click here to Donate to the my channel. ⭕️ ", url="https://t.me/kpmovielist/277")]
-        ) 
+        
     try:
         await query.edit_message_reply_markup(reply_markup=types.InlineKeyboardMarkup(btn))
     except errors.MessageNotModified:
@@ -307,16 +268,11 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
         reply_markup=types.InlineKeyboardMarkup(
             [
                 [
-                    types.InlineKeyboardButton("⭕️ Click here to Donate to the my channel.⭕️", url="https://t.me/kpmovielist/277")
-                ],
-                [
+                    types.InlineKeyboardButton("⭕️ Click here to Donate to the my channel.⭕️", url="https://t.me/kpmovielist/277"),             
                     types.InlineKeyboardButton("👉🏻 𝐕𝐈𝐏 𝐒𝐞𝐫𝐢𝐞𝐬 𝐌𝐞𝐦𝐛𝐞𝐫 ဝင်ရန် 👌🏻", url="https://t.me/Kpautoreply_bot")
                 ],           
                 [
-                    types.InlineKeyboardButton("⭕️ All Channel & Group Link ⭕️", url="https://t.me/Movie_Zone_KP/3")
-                ],           
-                [
-                    types.InlineKeyboardButton("⭕️ Owner Acc ⭕️", url="https://t.me/KOPAINGLAY15")
+                    types.InlineKeyboardButton("⭕️ Owner Acc ⭕", url="https://t.me/KOPAINGLAY15")
                 ]
             ]
 
