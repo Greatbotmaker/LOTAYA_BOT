@@ -281,7 +281,7 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
         )
     except errors.PeerIdInvalid:
         return await query.answer(f"https://t.me/{bot.me.username}?start=okok")
-    await query.answer(f'Sending : {file_info["file_name"]}')
+    await query.answer(f'Sending :Check bot DM \n\n {file_info["file_name"]}', show_alert=True)
 
 
 
