@@ -268,8 +268,8 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
         reply_markup=types.InlineKeyboardMarkup(
             [
                 [
-                    types.InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),             
-                    types.InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url=CHNL_LNK)
+                    types.InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url="https://t.me/Movie_Group_MMSUB"),             
+                    types.InlineKeyboardButton('Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ', url="https://t.me/+4DDoxav12EwyYzA1")
                 ],           
                 [
                     types.InlineKeyboardButton("⭕️ Owner Acc ⭕", url="https://t.me/KOPAINGLAY15")
