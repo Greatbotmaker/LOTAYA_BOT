@@ -108,21 +108,12 @@ async def start_handler(bot: Bot, msg: types.Message):
                         ),
                     ]
                 )
-                btn.append(
-                    [types.InlineKeyboardButton(text="🙅‍♂️ ဝင်မရရင် ဒီမှာလေ့လာပါ 🙅‍♂️", url="https://t.me/Kpautoreply_bot")]
-                )
-                btn.append(
-                    [types.InlineKeyboardButton(text="👉🏻 𝐕𝐈𝐏 𝐒𝐞𝐫𝐢𝐞𝐬 𝐌𝐞𝐦𝐛𝐞𝐫 ဝင်ရန် 👌🏻", url="https://t.me/Kpautoreply_bot")]
-                )
-                btn.append(
-                    [types.InlineKeyboardButton(text="⭕️ Click here to Donate to the my channel. ⭕️ ", url="https://t.me/kpmovielist/277")]
-                )
+                
                 
             else:
-                btn.append([types.InlineKeyboardButton(text="🙅‍♂️ ဝင်မရရင် ဒီမှာလေ့လာပါ 🙅‍♂️", url="https://t.me/Kpautoreply_bot")])
+               
                 btn.append([types.InlineKeyboardButton(text="🔰 1/1 🔰", callback_data="pages")])
-                btn.append([types.InlineKeyboardButton(text="👉🏻 𝐕𝐈𝐏 𝐒𝐞𝐫𝐢𝐞𝐬 𝐌𝐞𝐦𝐛𝐞𝐫 ဝင်ရန် 👌🏻", url="https://t.me/Kpautoreply_bot")])   
-                btn.append([types.InlineKeyboardButton(text="⭕️ Click here to Donate to the my channel. ⭕️ ", url="https://t.me/kpmovielist/277")])           
+                    
             if imdb:
                 cap = Config.TEMPLATE.format(  # type: ignore
                     query=keyword,
@@ -185,7 +176,7 @@ async def start_handler(bot: Bot, msg: types.Message):
             [                
                 [
                     types.InlineKeyboardButton(
-                        "♻️ 𝕁𝕆𝕀ℕ 𝕆𝕌ℝ 𝔾ℝ𝕆𝕌ℙ 𝕋𝕆 𝕌𝕊𝔼 𝕄𝔼 ♻️", url="https://t.me/MKS_RequestGroup"
+                        "♻️ 𝕁𝕆𝕀ℕ 𝕆𝕌ℝ 𝔾ℝ𝕆𝕌ℙ 𝕋𝕆 𝕌𝕊𝔼 𝕄𝔼 ♻️", url="https://t.me/Movie_Group_MMSUB"
                     )
                 ],
                 [
@@ -258,7 +249,7 @@ async def home_handler(bot: Bot, query: types.CallbackQuery):
             [                
                 [
                     types.InlineKeyboardButton(
-                        "♻️ 𝕁𝕆𝕀ℕ 𝕆𝕌ℝ 𝔾ℝ𝕆𝕌ℙ 𝕋𝕆 𝕌𝕊𝔼 𝕄𝔼 ♻️", url="https://t.me/MKS_RequestGroup"
+                        "♻️ 𝕁𝕆𝕀ℕ 𝕆𝕌ℝ 𝔾ℝ𝕆𝕌ℙ 𝕋𝕆 𝕌𝕊𝔼 𝕄𝔼 ♻️", url="https://t.me/Movie_Group_MMSUB"
                     )
                 ],
                 [
