@@ -65,7 +65,7 @@ def song(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f'🎵 <b> 𝑻𝒊𝒕𝒍𝒆:</b> <a href="{link}">{title}</a>\n<b>🙋  တောင်းဆိုသူ  : <i><b>{message.from_user.mention}</b>\n<b>🔎  ရှာပေးသူ       : <i><b>{message.chat.title}</b>\n📤 Uploaded By : <a href="https://t.me/Painglay15">©  Ko Paing </a><b>\n<b><a href="https://t.me/mksviplink">© MKS Channel</a></b>'
+        rep = f"""🎵 <b> 𝑻𝒊𝒕𝒍𝒆:</b> <a href="{link}">{title}</a>\n<b>🙋  တောင်းဆိုသူ  : <i><b>{message.from_user.mention}</b>\n<b>🔎  ရှာပေးသူ       : <i><b>{message.chat.title}</b>\n📤 Uploaded By : <a href="https://t.me/Painglay15">©  Ko Paing </a><b>\n<b><a href="https://t.me/mksviplink">© MKS Channel</a></b>""" 
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
