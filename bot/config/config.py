@@ -82,7 +82,7 @@ class Config:
     )
 
     IMDB = True
-    CHANNEL = True
+    CHANNEL = False
     IMDB_POSTER = True
     PM_IMDB = True
     PM_IMDB_POSTER = True
