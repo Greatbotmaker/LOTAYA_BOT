@@ -43,9 +43,10 @@ class Config:
     WELCOM_PIC = environ.get("WELCOM_PIC", "")
     WELCOM_TEXT = environ.get("WELCOM_TEXT", "Hay {user}\nwelcome to {chat} GROUP")
     LOG_CHANNEL = int(get_config("LOG_CHANNEL", "-1001254905376"))
-   
+    FILE_CHANNEL = get_config('FILE_CHANNEL', "-1001615715585")
+    SUPPORT_CHAT_ID = int(get_config("SUPPORT_CHAT_ID", "-1001184634271"))
     FORCE_SUB_CHANNEL = int(get_config("FORCE_SUB_CHANNEL", "-1001832645221"))
-
+    MUSIC_CHANNEL = int(get_config("MUSIC_CHANNEL" , "-1001289580487"))
     TEMPLATE = get_config(
         "IMDB_TEMPLATE",
          """<b>🏷 Title </b>: <a href={url}>{title}</a> -- <a href={url}/releaseinfo>{year}</a>  — <b>{kind}</b> 
@@ -80,7 +81,31 @@ class Config:
 
 =========== • ✠ • ===========</b>""",
     )
+    CUSTOM_FILE_CAPTION2 = get_config(
+        "CUSTOM_FILE_CAPTION",
+        """📂 Fɪʟᴇ Caption: </b> <code>{caption}</code><b>
+        
+<b>📂 Fɪʟᴇ ɴᴀᴍᴇ : </b> <code>{file_name}</code><b>
 
+<b>📂 Fɪʟᴇ Size :</b> <code>{file_size}</code><b>
+
+╭─────── • ◆ • ───────╮
+ 
+   🔅 Modified By      :      <a href="https://t.me/kopainglay15">Mr.Ko Paing Lay</a>
+ 
+╰─────── • ◆ • ───────╯ """)    
+    FILE_MSG = """
+        
+        
+<b>Hey 👋 {} </b>😍
+
+<b>📫 Your Music File is Ready</b>
+
+<b>📂 Music Nᴀᴍᴇ</b> :<code>{}</code></a> 
+
+                       
+<b>🙋  တောင်းဆိုသူ  : <b>{}</b> """  
+    
     IMDB = True
     CHANNEL = False
     IMDB_POSTER = True
