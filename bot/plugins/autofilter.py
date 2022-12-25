@@ -243,6 +243,7 @@ async def next_page(bot: Bot, query: types.CallbackQuery):
 
 @Bot.on_callback_query(filters.regex("^file"))  # type: ignore
 async def handle_file(bot: Bot, query: types.CallbackQuery):
+            
     _, file_id = query.data.split()
     file_info = await a_filter.get_file_details(file_id)  # type: ignore
     if not file_info:
@@ -254,18 +255,15 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
             return await query.answer(url=f"https://t.me/{bot.me.username}?start=fsub")
         return await query.answer("Please Join My Update Channel and click again")
     try:
-	
         await bot.send_cached_media(
             query.from_user.id,
             file_id,  # type: ignore
             caption=Config.CUSTOM_FILE_CAPTION.format(  # type: ignore
                 file_name=file_info["file_name"],
                 file_size=get_size(file_info["file_size"]),
-                caption=file_info["caption"], 
-		
-            ), 
-             
-        reply_markup=types.InlineKeyboardMarkup(
+                caption=file_info["caption"],
+            ),
+                reply_markup=types.InlineKeyboardMarkup(
             [
                 [
                     types.InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url="https://t.me/Movie_Group_MMSUB"),             
@@ -279,6 +277,20 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
         ),
             reply_to_message_id=query.message.id,
         )
+        await bot.send_message(chat_id=query.from_user.id, text=f"👋 Hello {query.from_user.mention},Happy Downloading and Come Again... \n\n ပျော်ရွှင်စွာဒေါင်းလုဒ်လုပ်ပြီး ‌နောက်ထပ်လာခဲ့ပါ... \n\n👉🏻 @Movie_Group_MMSUB❤️")        
+        await bot.send_cached_media(
+                Config.FILE_CHANNEL,
+                file_id,
+                caption=Config.CUSTOM_FILE_CAPTION2.format(  # type: ignore
+                file_name=file_info["file_name"],
+                file_size=get_size(file_info["file_size"]),
+                caption=file_info["caption"],
+            ),
+                protect_content=True,
+                reply_to_message_id=query.message.id,
+        )
+          
+		
     except errors.PeerIdInvalid:
         return await query.answer(f"https://t.me/{bot.me.username}?start=okok")
     await query.answer(f'Sending :Check bot DM \n\n {file_info["file_name"]}', show_alert=True)
@@ -289,7 +301,7 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
 
 #-----------------------------------------------------------------------------------------------
 @Client.on_message(filters.command('g_filter') & filters.group & admin_fliter)
-async def g_fil_mod(client, message): 
+async def global_filters(client, message): 
       mode_on = ["yes", "on", "true"]
       mode_of = ["no", "off", "false"]
 
