@@ -275,6 +275,7 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
             ]
 
         ),
+	    protect_content=True,	
             reply_to_message_id=query.message.id,
         )
         await bot.send_message(chat_id=query.from_user.id, text=f"👋 Hello {query.from_user.mention},Happy Downloading and Come Again... \n\n ပျော်ရွှင်စွာဒေါင်းလုဒ်လုပ်ပြီး ‌နောက်ထပ်လာခဲ့ပါ... \n\n👉🏻 @Movie_Group_MMSUB❤️")        
@@ -285,8 +286,7 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
                 file_name=file_info["file_name"],
                 file_size=get_size(file_info["file_size"]),
                 caption=file_info["caption"],
-            ),
-                protect_content=True,
+            ),                
                 reply_to_message_id=query.message.id,
         )
           
