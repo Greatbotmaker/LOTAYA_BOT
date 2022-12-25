@@ -15,12 +15,15 @@ from ..config import Config
 from bot import Bot
 from pyrogram import filters, Client, enums
 from pyrogram.errors import FloodWait, MessageNotModified
-from pyrogram.types import Message
+from pyrogram.types import (InlineKeyboardButton,
+                            InlineKeyboardMarkup, InputMediaAudio,
+                            InputMediaVideo, Message)
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
 from yt_dlp import YoutubeDL
 import youtube_dl
 import requests
+
 
 def time_to_seconds(time):
     stringt = str(time)
@@ -40,19 +43,10 @@ async def pm_text(bot, message):
     )
 
 
-@Client.on_message(filters.private & filters.text & filters.incoming)
-async def pm_text(bot, message):
-    content = message.text
-    user = message.from_user.first_name
-    user_id = message.from_user.id
-    if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtags
-    if user_id in Config.ADMINS: return # ignore admins
-    await message.reply_text("<b>Yᴏᴜʀ ᴍᴇssᴀɢᴇ ʜᴀs ʙᴇᴇɴ sᴇɴᴛ ᴛᴏ ᴍʏ ᴍᴏᴅᴇʀᴀᴛᴏʀs!\n\nသင့်စာကို မင်မင်ထံ ပေးပို့လိုက်ပါပြီး။ !</b>")
-    await bot.send_message(
-        chat_id=Config.LOG_CHANNEL,
-        text=f"<b>#𝐏𝐌_𝐌𝐒𝐆\n\n{bot.me.username}\n\nNᴀᴍᴇ : {user}\n\nID : {user_id}\n\nMᴇssᴀɢᴇ : {content}</b>"
-    )
-    
+
+
+
+
 @Client.on_message(filters.command(["song", "music", "mp3"]) & ~filters.channel)
 def song(client, message):
     urlissed = get_text(message)
@@ -64,7 +58,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply(f"**🔎🔎 ရှာပေးနေပါတယ် ☺️ .. \nဒီသီချင်းကို 👉 ** `{urlissed}`")
+    m = message.reply(f"**Hello {user_name}, \n\n ဒီသီချင်း 👉 ** `{urlissed}` ကို  ရှာပေးနေပါတယ် 🔎🔎 ☺️ ..")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -75,43 +69,66 @@ def song(client, message):
         thumb_name = f'thumb{title}.jpg'
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, 'wb').write(thumb.content)
-
-
-        performer = f"[KO PAING]" 
+        performer = f"[KOPAINGLAY]" 
         duration = results[0]["duration"]
         url_suffix = results[0]["url_suffix"]
         views = results[0]["views"]
-
+ 
    
     except Exception as e:
         m.edit(
-            "****သီချင်းနာမည်ပါ မရေး‌ဘဲနဲ့ ခေါင်းခေါက်လိုက်အုံးမယ် 🙄!\n* ခေါင်းခေါက်ရတာလဲ လက်တွေနာနေပြီး 🌝 </a>\nMusic ရှာနည်း\n /song music name \n{ ဥပမာ - /song သေမလိုပဲ }**"
+            f"**** Hey {user_name}, သီချင်းနာမည်ပါ မရေး‌ဘဲနဲ့ ခေါင်းခေါက်လိုက်အုံးမယ် 🙄!\n* ခေါင်းခေါက်ရတာလဲ လက်တွေနာနေပြီး 🌝 </a>\nMusic ရှာနည်း\n /song music name \n-- ဥပမာ - /song သေမလိုပဲ**"
         )
         print(str(e))
         return
-    m.edit("**🔎  ရှာတွေတာ တင်ပေးနေပါတယ် \nခဏစောင့်ပါနော် 😊😊... Upload......❣️**")
+    m.edit(f"**🔎 မင်မင်ရှာတွေတဲ့ ➡️  {title} သီချင်းကို တင်ပေးနေပါတယ် \nခဏစောင့်ပါနော် 😊😊... Upload......❣️**")
     
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        #rep = '**𝚂𝚄𝙱𝚂𝙲𝚁𝙸𝙱𝙴 ›› [𝙾𝙿𝚄𝚂-𝚃𝙴𝙲𝙷𝚉](https://youtube.com/channel/UCf_dVNrilcT0V2R--HbYpMA)**\n**𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 ›› [muѕíc вσч](https://t.me/OPMusicBoy_Bot)**'
+        req = '**𝚂𝚄𝙱𝚂𝙲𝚁𝙸𝙱𝙴 ›› [𝙾𝙿𝚄𝚂-𝚃𝙴𝙲𝙷𝚉](https://youtube.com/channel/UCf_dVNrilcT0V2R--HbYpMA)**\n**𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 ›› [muѕíc вσч](https://t.me/OPMusicBoy_Bot)**'
         
-        rep = rep = f'🎵 𝑻𝒊𝒕𝒍𝒆 : [{title}]({link})\n🙋  Request By  : {rpk}\n🔎  Searching      : {message.chat.title}\n📤 Uploaded By : [©  Ko Paing](https://t.me/KOPAINGLAY15)\n[© MKS Channel](https://t.me/mksviplink2)' 
-       
+        #rep = rep = f'🎵 𝑻𝒊𝒕𝒍𝒆 : [{title}]({link})\n🙋  Request By  : {rpk}\n🔎  Searching      : {message.chat.title}\n📤 Uploaded By : [©  Ko Paing](https://t.me/KOPAINGLAY15)\n[© MKS Channel](https://t.me/mksviplink2)' 
+        rep = f'🎵 <b> 𝑻𝒊𝒕𝒍𝒆:</b> <a href="{link}">{title}</a>\n<b>📤 Uploaded By : <a href="https://t.me/mksviplink">© MKS Channel</a></b>' 
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
-            secmul *= 60
-    
+            secmul *= 60       
     
         query += ' ' + str(i)
-        print(query)    
-        message.reply_audio(audio_file, caption=rep, parse_mode=enums.ParseMode.MARKDOWN, quote=False, title=title, duration=dur, performer=performer, thumb=thumb_name)
+        print(query)  
+        file_send = client.send_audio(
+            chat_id=Config.MUSIC_CHANNEL,
+            audio=audio_file, 
+            caption=rep,
+            parse_mode=enums.ParseMode.HTML,            
+            title=title, 
+            duration=dur, 
+            performer=performer,
+            thumb=thumb_name,
+            reply_markup=InlineKeyboardMarkup(
+        [
+        [InlineKeyboardButton('🔎 𝕄𝕦𝕤𝕚𝕔 𝕊𝕖𝕒𝕣𝕔𝕙 𝔾𝕣𝕠𝕦𝕡 🔍', url = "https://t.me/+XrP5-m5NLUIxYTU9")
+        ]
+        ]
+        )
+        )        
+        client.send_message(
+        message.chat.id,          
+        Config.FILE_MSG.format(message.from_user.mention, title, message.from_user.mention),
+        parse_mode=enums.ParseMode.HTML,          
+        reply_markup=InlineKeyboardMarkup(
+        [
+        [InlineKeyboardButton('📥 𝕄𝕦𝕤𝕚𝕔 𝔻𝕠𝕨𝕟𝕝𝕠𝕒𝕕 𝕃𝕚𝕟𝕜 📥 ', url = file_send.link)
+        ]
+        ]
+        )
+    )
         m.delete()
     except Exception as e:
-        m.edit("**🚫 𝙴𝚁𝚁𝙾𝚁 🚫**")
+        m.edit("**🚫 𝙴𝚁𝚁𝙾𝚁 🚫**\n TryAgain ")
         print(e)
 
     try:
@@ -258,20 +275,22 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
 
-
+  
     
 @Client.on_message(filters.command(["video", "mp4"]))
 async def vsong(client, message: Message):
     urlissed = get_text(message)
+    user_id = message.from_user.id 
+    user_name = message.from_user.first_name 
     query = ''
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
     pablo = await client.send_message(
-        message.chat.id, f"**🔎🔎 ရှာပေးနေပါတယ် ☺️ ..\nဒီသီချင်းကို 👉 ** `{urlissed}`"
+        message.chat.id, f"**Hello {user_name}, \n\n ဒီသီချင်း 👉 ** `{urlissed}` ကို ရှာပေးနေပါတယ် 🔎🔎 ☺️ .."
     )
     if not urlissed:
-        await pablo.edit("သီချင်းနာမည်ပါ မရေး‌ဘဲနဲ့ ခေါင်းခေါက်လိုက်အုံးမယ် 🙄!\n* ခေါင်းခေါက်ရတာလဲ လက်တွေနာနေပြီး 🌝 \nVideo ရှာနည်း \n/video music name\n{ ဥပမာ - /video သေမလိုပဲ }")
+        await pablo.edit(f"Hey {user_name} သီချင်းနာမည်ပါ မရေး‌ဘဲနဲ့ ခေါင်းခေါက်လိုက်အုံးမယ် 🙄!\n* ခေါင်းခေါက်ရတာလဲ လက်တွေနာနေပြီး 🌝 \nVideo ရှာနည်း \n/video music name\n-- ဥပမာ - /video သေမလိုပဲ ")
         return
 
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
@@ -306,17 +325,37 @@ async def vsong(client, message: Message):
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
     capy = capy = f"""
-**🎵 𝑻𝒊𝒕𝒍𝒆 :** [{thum}]({mo})</a>\n<b>🙋  တောင်းဆိုသူ  : <i><b>{message.from_user.mention}</b>\n<b>🔎   ရှာပေးသူ     : <i><b>{message.chat.title}</b>\n📤 Uploaded By : <a href="https://t.me/Painglay15">©  Ko Paing </a><b>\n<b><a href="https://t.me/mksviplink">© MKS Channel</a></b>
+**🎵 𝑻𝒊𝒕𝒍𝒆 :** [{thum}]({mo})</a>\n\n📤 Uploaded By : <a href="https://t.me/Painglay15">©  Ko Paing </a><b><b><a href="https://t.me/mksviplink">© MKS Channel</a></b>
+""" 
+    capyy = f"""
+**🎵 𝑻𝒊𝒕𝒍𝒆 :**[{thum}]({mo})</a>\n<b> 🙋  တောင်းဆိုသူ  : <i><b>{message.from_user.mention}</b>\n<b>🔎   ရှာပေးသူ     : <i><b>{message.chat.title}</b>\n📤 Uploaded By : <a href="https://t.me/Painglay15">©  Ko Paing </a><b>\n<b><a href="https://t.me/mksviplink">© MKS Channel</a></b>
 """
-    await client.send_video(
-        message.chat.id,
+    #await client.send_video(message.chat.id,video=open(file_stark, "rb"),duration=int(ytdl_data["duration"]),file_name=str(ytdl_data["title"]),thumb=sedlyf,caption=capy,supports_streaming=True,)
+    file_send = await client.send_video(
+        Config.MUSIC_CHANNEL,        
         video=open(file_stark, "rb"),
         duration=int(ytdl_data["duration"]),
         file_name=str(ytdl_data["title"]),
         thumb=sedlyf,
         caption=capy,
-        supports_streaming=True,        
-        
+        supports_streaming=True,
+        reply_markup=InlineKeyboardMarkup(
+        [
+        [InlineKeyboardButton('🔎 𝕍𝕚𝕕𝕖𝕠 𝕄𝕦𝕤𝕚𝕔 𝕊𝕖𝕒𝕣𝕔𝕙 𝔾𝕣𝕠𝕦𝕡 🔍', url = "https://t.me/+XrP5-m5NLUIxYTU9")
+        ]
+        ]
+        )
+        )
+    await client.send_message(
+        message.chat.id, 
+        Config.FILE_MSG.format(message.from_user.mention, thum, message.from_user.mention),
+        parse_mode=enums.ParseMode.HTML,
+        reply_markup=InlineKeyboardMarkup(
+        [
+        [InlineKeyboardButton('📥 𝕄𝕦𝕤𝕚𝕔 𝔻𝕠𝕨𝕟𝕝𝕠𝕒𝕕 𝕃𝕚𝕟𝕜 📥 ', url = file_send.link)
+        ]
+        ]
+        )
     )
     await pablo.delete()
     for files in (sedlyf, file_stark):
