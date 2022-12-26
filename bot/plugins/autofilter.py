@@ -305,7 +305,7 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
 async def global_filters(bot: Client, message, text=False):		
     Cache.BUTTONS[key] = search
     settings = await config_db.get_settings(f"SETTINGS_{message.chat.id}")
-    if settings["GFILTER"]: 
+    if settings["GFILTER"] 
     group_id = message.chat.id
     name = text or message.text
     reply_id = message.reply_to_message.id if message.reply_to_message else message.id
