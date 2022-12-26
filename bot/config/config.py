@@ -83,17 +83,11 @@ class Config:
     )
     CUSTOM_FILE_CAPTION2 = get_config(
         "CUSTOM_FILE_CAPTION",
-        """📂 Fɪʟᴇ Caption: </b> <code>{caption}</code><b>
-        
-<b>📂 Fɪʟᴇ ɴᴀᴍᴇ : </b> <code>{file_name}</code><b>
+        """ </b> <code>{file_name}</code><b>
 
-<b>📂 Fɪʟᴇ Size :</b> <code>{file_size}</code><b>
-
-╭─────── • ◆ • ───────╮
- 
-   🔅 Modified By      :      <a href="https://t.me/kopainglay15">Mr.Ko Paing Lay</a>
- 
-╰─────── • ◆ • ───────╯ """)    
+ """)
+    
+    
     FILE_MSG = """
         
         
