@@ -70,12 +70,7 @@ G_MODE = {}
 
 @Bot.on_message(filters.group & filters.text & filters.incoming, group=-1)  # type: ignore
 async def give_filter(bot: Bot, message: types.Message):
-    
-    #settings = await config_db.get_settings(f"SETTINGS_{message.chat.id}")
-    #if settings["GFILTER"]:
-        #await global_filters(bot, message)
-    #else:
-        await global_filters(bot, message)
+    await global_filters(bot, message)
 
 
     if message.text.startswith("/"):
