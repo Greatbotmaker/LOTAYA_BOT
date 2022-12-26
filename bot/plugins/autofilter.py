@@ -243,7 +243,7 @@ async def next_page(bot: Bot, query: types.CallbackQuery):
 
 
 @Bot.on_callback_query(filters.regex("^file"))  # type: ignore
- handle_file(bot: Bot, query: types.CallbackQuery):
+async def handle_file(bot: Bot, query: types.CallbackQuery):
             
     _, file_id = query.data.split()
     file_info = await a_filter.get_file_details(file_id)  # type: ignore
