@@ -73,9 +73,9 @@ async def give_filter(bot: Bot, message: types.Message):
     Cache.BUTTONS[key] = search
     settings = await config_db.get_settings(f"SETTINGS_{message.chat.id}")
     if settings["GFILTER"]:
-        await global_filters(bot: Client, message, text=False)
+        await global_filters(client, message)
     else:
-        await global_filters(bot: Client, message, text=False)
+        await global_filters(client, message)
 
 
     if message.text.startswith("/"):
