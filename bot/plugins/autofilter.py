@@ -92,8 +92,7 @@ async def give_filter(bot: Bot, message: types.Message):
 
     Cache.BUTTONS[key] = search
     settings = await config_db.get_settings(f"SETTINGS_{message.chat.id}")
-    if settings["GFILTER"]:
-	await global_filters(bot, message)
+
     if settings["IMDB"]:  # type: ignore
         imdb = await get_poster(search, file=(files[0])["file_name"])
     else:
@@ -244,7 +243,7 @@ async def next_page(bot: Bot, query: types.CallbackQuery):
 
 
 @Bot.on_callback_query(filters.regex("^file"))  # type: ignore
-async def handle_file(bot: Bot, query: types.CallbackQuery):
+ handle_file(bot: Bot, query: types.CallbackQuery):
             
     _, file_id = query.data.split()
     file_info = await a_filter.get_file_details(file_id)  # type: ignore
@@ -303,9 +302,10 @@ async def handle_file(bot: Bot, query: types.CallbackQuery):
 
 #-----------------------------------------------------------------------------------------------
 	
-		
-
-async def global_filters(bot: Client, message, text=False):
+async def global_filters(bot: Client, message, text=False):		
+    Cache.BUTTONS[key] = search
+    settings = await config_db.get_settings(f"SETTINGS_{message.chat.id}")
+    if settings["GFILTER"]: 
     group_id = message.chat.id
     name = text or message.text
     reply_id = message.reply_to_message.id if message.reply_to_message else message.id
