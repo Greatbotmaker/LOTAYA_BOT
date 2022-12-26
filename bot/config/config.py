@@ -105,5 +105,5 @@ class Config:
     IMDB_POSTER = True
     PM_IMDB = True
     PM_IMDB_POSTER = True
-
+    G_FILTER = True
     USE_CAPTION_FILTER = get_config("USE_CAPTION_FILTER", True, True)  # type: ignore 
