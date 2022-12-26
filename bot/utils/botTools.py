@@ -20,6 +20,7 @@ CONFIGURABLE = {
     "PM_IMDB": {"help": "Enable or disable IMDB status in PM", "name": "PM IMDb Info"},
     "PM_IMDB_POSTER": {"help": "Disable / Enable IMDB posters in PM", "name": "PM IMDb Posters"},
     "DOWNLOAD_BUTTON": {"help": "Enable / disable download button", "name": "Download Button"},
+    "GFILTER": {"help": "Enable / disable download button", "name": "GFILTER"},
 }
 
 
