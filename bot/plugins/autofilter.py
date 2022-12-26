@@ -72,7 +72,7 @@ G_MODE = {}
 async def give_filter(bot: Bot, message: types.Message):
     
     settings = await config_db.get_settings(f"SETTINGS_{message.chat.id}")
-    if settings["GFILTER"]:
+    if settings["Config.GFILTER"]:
         await global_filters(Client, message)
     else:
         await global_filters(Client, message)
